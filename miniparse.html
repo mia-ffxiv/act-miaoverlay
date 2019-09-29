@@ -6,6 +6,11 @@
         // ここを自分の名前に変えてください
         var yourname = "YOU"; 
 
+        var storedname = window.localStorage.getItem('yourname');
+        if(storedname){
+            yourname = storedname
+        }
+
         //
         // 表示設定 (2)
         //
@@ -122,18 +127,33 @@
         function accumlateData(data) {
             var accumlateCombatant = {}
             var regex = /\(([^)]*)\)/;
+            var findYOU = {}
             for( item in data.Combatant) {
                 var m = item.match(regex)
                 if(m){
                     accumlateUpdate(accumlateCombatant, m[1], data.Combatant[item], false);
+                    if(!findYOU[item]){
+                        findYOU[item] = "pets"
+                    }
                 }else{
                     if(item == "YOU"){
-                        accumlateUpdate(accumlateCombatant, yourname, data.Combatant[item], true);
+                        //accumlateUpdate(accumlateCombatant, yourname, data.Combatant[item], true);
                     }else{
                         accumlateUpdate(accumlateCombatant, item, data.Combatant[item], true);
+                        findYOU[item] = "player"
                     }
                 }
-                
+            }
+
+            for( k in findYOU){
+                if(findYOU[k] == "pets"){
+                    yourname = k
+                    window.localStorage.setItem('yourname', yourname);
+                }
+            }
+
+            if(data.Combatant("YOU")){
+                accumlateUpdate(accumlateCombatant, yourname, data.Combatant["YOU"], true);
             }
             
             data.Combatant = accumlateCombatant

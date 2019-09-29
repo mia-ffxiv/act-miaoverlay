@@ -1,12 +1,55 @@
 # ACT MiaOverlay
+
+
+
+```
+注意：
+現在まだテスト公開中で自分のエギや影見などの DPS が合算されません。
+```
+
+
+
 ACT Overlay Plugin 用のスキンです。
-昔から使っている方はデザインに見覚えがある方もいるのではないかと思います。
+FF14 のシステム UI に馴染むデザインになっており、計測時以外表示されないようにするなど極力邪魔にならないようにしています。
+
+昔から ACT を利用している方はデザインに見覚えがある方もいるのではないかと思います。
 
 
+
+### 機能
+
+- FFXIV Shadowbringer に対応
+- FF14 のシステム UI に馴染むデザイン
+- ペット、エギ、影身などの DPS 合算に対応
+- 10 分間銭湯がない場合に自動的に非表示になります
+
+
+
+### 設定用 URL
 
 ```
 https://mia-ffxiv.github.io/act-miaoverlay/miniparse.html
 ```
 
 
+
+### 利用方法
+
+下記の手順で利用してください。
+
+
+
+- ACT を起動した後、Plugins ー Overlay Plugin.dll と上のタブを選択して下記の画面を出します。
+
+- 左下の追加を押して「新しいオーバーレイ」画面を出してそこに適当な名前（ここでは miaoverlay）を入力して OK を押します。
+- 表示する URL 欄に https://mia-ffxiv.github.io/act-miaoverlay/miniparse.html と入れます。
+- 最後にオーバーレイを表示するにチェックが入っていることを確認します。
+
+
+
+![overlaysetting](./img/overlaysetting2.png)
+
+
+
+![add](./img/add.png)
 
