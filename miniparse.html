@@ -147,10 +147,11 @@
                 c++;
             }
 
-            if(c <= 8){
+            if(c <= 12){
                 for( k in findYOU){
                     if(findYOU[k] == "pets"){
-                        yourname = k
+                        var mk = k.match(regex)
+                        yourname = mk[1]
                         window.localStorage.setItem('yourname', yourname);
                     }
                 }
