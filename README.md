@@ -7,6 +7,10 @@ FF14 のシステム UI に馴染むデザインになっており、計測時�
 
 
 
+![sample](./img/sample.png)
+
+
+
 ### 機能
 
 - FFXIV Shadowbringer に対応
