@@ -153,14 +153,19 @@
                         var mk = k.match(regex)
                         yourname = mk[1]
                         window.localStorage.setItem('yourname', yourname);
-
-                        if(!data.Combatant["YOU"]){
-                            delete accumlateCombatant[k]
-                        }
                     }
                 }
             }
 
+            for( k in findYOU){
+                if(findYOU[k] == "pets"){
+                    var mk = k.match(regex)
+                    if(!data.Combatant["YOU"]){
+                        delete accumlateCombatant[mk[1]]
+                    }
+                }
+            }
+            
             if(data.Combatant["YOU"]){
                 accumlateUpdate(accumlateCombatant, yourname, data.Combatant["YOU"], true);
             }
