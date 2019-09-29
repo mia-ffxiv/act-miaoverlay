@@ -159,6 +159,8 @@
 
             if(data.Combatant["YOU"]){
                 accumlateUpdate(accumlateCombatant, yourname, data.Combatant["YOU"], true);
+            }else{
+                delete accumlateCombatant[yourname];
             }
             
             data.Combatant = accumlateCombatant
