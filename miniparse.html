@@ -153,6 +153,8 @@
                         var mk = k.match(regex)
                         yourname = mk[1]
                         window.localStorage.setItem('yourname', yourname);
+                        delete findYOU[k];
+                        break;
                     }
                 }
             }
@@ -160,9 +162,7 @@
             for( k in findYOU){
                 if(findYOU[k] == "pets"){
                     var mk = k.match(regex)
-                    if(!data.Combatant["YOU"]){
-                        delete accumlateCombatant[mk[1]]
-                    }
+                    delete accumlateCombatant[mk[1]]
                 }
             }
             
