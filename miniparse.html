@@ -128,6 +128,7 @@
             var accumlateCombatant = {}
             var regex = /\(([^)]*)\)/;
             var findYOU = {}
+            var c = 0
             for( item in data.Combatant) {
                 var m = item.match(regex)
                 if(m){
@@ -143,16 +144,19 @@
                         findYOU[item] = "player"
                     }
                 }
+                c++;
             }
 
-            for( k in findYOU){
-                if(findYOU[k] == "pets"){
-                    yourname = k
-                    window.localStorage.setItem('yourname', yourname);
+            if(c <= 8){
+                for( k in findYOU){
+                    if(findYOU[k] == "pets"){
+                        yourname = k
+                        window.localStorage.setItem('yourname', yourname);
+                    }
                 }
             }
 
-            if(data.Combatant("YOU")){
+            if(data.Combatant["YOU"]){
                 accumlateUpdate(accumlateCombatant, yourname, data.Combatant["YOU"], true);
             }
             
