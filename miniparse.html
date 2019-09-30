@@ -133,8 +133,8 @@
                 var m = item.match(regex)
                 if(m){
                     accumlateUpdate(accumlateCombatant, m[1], data.Combatant[item], false);
-                    if(!findYOU[item]){
-                        findYOU[item] = "pets"
+                    if(!findYOU[m[1]]){
+                        findYOU[m[1]] = "pets"
                     }
                 }else{
                     if(item == "YOU"){
@@ -150,9 +150,7 @@
             if(c <= 12){
                 for( k in findYOU){
                     if(findYOU[k] == "pets"){
-                        var mk = k.match(regex)
-                        yourname = mk[1]
-                        window.localStorage.setItem('yourname', yourname);
+                        window.localStorage.setItem('yourname', k);
                         delete findYOU[k];
                         break;
                     }
@@ -161,8 +159,7 @@
 
             for( k in findYOU){
                 if(findYOU[k] == "pets"){
-                    var mk = k.match(regex)
-                    delete accumlateCombatant[mk[1]]
+                    delete accumlateCombatant[k];
                 }
             }
             
