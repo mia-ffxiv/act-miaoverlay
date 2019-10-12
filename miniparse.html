@@ -129,44 +129,29 @@
             var regex = /\(([^)]*)\)/;
             var findYOU = {}
             var c = 0
+            
+            for( item in data.Combatant) {
+                var m = item.match(regex)
+                if(!m){
+                    if(item == "YOU"){
+                        accumlateUpdate(accumlateCombatant, yourname, data.Combatant[item], true);
+                    }else{
+                        accumlateUpdate(accumlateCombatant, item, data.Combatant[item], true);
+                    }
+                }
+            }
+
             for( item in data.Combatant) {
                 var m = item.match(regex)
                 if(m){
-                    accumlateUpdate(accumlateCombatant, m[1], data.Combatant[item], false);
-                    if(!findYOU[m[1]]){
-                        findYOU[m[1]] = "pets"
-                    }
-                }else{
-                    if(item == "YOU"){
-                        //accumlateUpdate(accumlateCombatant, yourname, data.Combatant[item], true);
+                    if(accumlateCombatant[m[1]]){
+                        accumlateUpdate(accumlateCombatant, m[1], data.Combatant[item], false);
                     }else{
-                        accumlateUpdate(accumlateCombatant, item, data.Combatant[item], true);
-                        findYOU[item] = "player"
-                    }
-                }
-                c++;
-            }
-
-            if(c <= 12){
-                for( k in findYOU){
-                    if(findYOU[k] == "pets"){
-                        window.localStorage.setItem('yourname', k);
-                        delete findYOU[k];
-                        break;
+                        accumlateUpdate(accumlateCombatant, yourname, data.Combatant[item], true);
                     }
                 }
             }
 
-            for( k in findYOU){
-                if(findYOU[k] == "pets"){
-                    delete accumlateCombatant[k];
-                }
-            }
-            
-            if(data.Combatant["YOU"]){
-                accumlateUpdate(accumlateCombatant, yourname, data.Combatant["YOU"], true);
-            }
-            
             data.Combatant = accumlateCombatant
             keys = Object.keys(accumlateCombatant).sort(function(a,b){
                 var adps = 0;
